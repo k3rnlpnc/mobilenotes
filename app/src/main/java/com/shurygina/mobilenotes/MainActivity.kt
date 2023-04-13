@@ -12,35 +12,35 @@ import androidx.annotation.RequiresApi
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import com.shurygina.mobilenotes.databinding.ActivityMainBinding
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.Date
 
 @RequiresApi(Build.VERSION_CODES.O)
 class MainActivity : AppCompatActivity() {
-    lateinit var tasks: List<TextInputEditText>
-    lateinit var currentDate: TextView
+    lateinit var binding: ActivityMainBinding
 
     val dateFormat = DateTimeFormatter.ofPattern("d MMMM")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         initStartActivity()
     }
 
     private fun initStartActivity() {
-        currentDate = findViewById<TextView>(R.id.currentDate)
-        currentDate.text = LocalDate.now().format(dateFormat)
+        binding.currentDate.text = LocalDate.now().format(dateFormat)
     }
 
     fun onAddTaskClick(view: View) {
     }
 
     fun onWindowClick(view: View) {
-        findViewById<ConstraintLayout>(R.id.mainActivity).clearFocus()
+        binding.root.clearFocus()
     }
 
 }
