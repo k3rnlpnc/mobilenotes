@@ -56,12 +56,12 @@
         android:id="@+id/priorityLabel"
         android:layout_width="100dp"
         android:layout_height="30dp"
-        android:layout_marginTop="388dp"
         android:fontFamily="@font/montserrat_bold"
         android:gravity="left"
         android:text="Приоритет"
         android:textColor="#F8F2F2"
         android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.144"
         app:layout_constraintStart_toStartOf="parent"
@@ -71,15 +71,13 @@
         android:id="@+id/prioritySwitch"
         android:layout_width="96dp"
         android:layout_height="52dp"
+        android:layout_marginStart="200dp"
         android:gravity="center"
         android:scaleX="1.5"
         android:scaleY="1.5"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.723"
-        app:layout_constraintStart_toEndOf="@+id/priorityLabel"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
+        app:layout_constraintBottom_toBottomOf="@+id/priorityLabel"
+        app:layout_constraintStart_toStartOf="@+id/priorityLabel"
+        app:layout_constraintTop_toTopOf="@+id/priorityLabel" />
 
     <Button
         android:id="@+id/backBtn"
