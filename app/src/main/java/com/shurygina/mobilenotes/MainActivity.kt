@@ -1,5 +1,6 @@
 package com.shurygina.mobilenotes
 
+import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -37,6 +38,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onAddTaskClick(view: View) {
+        val newTaskIntent = Intent(this, NewTaskActivity::class.java)
+        startActivity(newTaskIntent)
+        finish()
     }
 
     fun onWindowClick(view: View) {
