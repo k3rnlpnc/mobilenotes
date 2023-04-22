@@ -38,4 +38,22 @@
         app:layout_constraintHorizontal_bias="0.871"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <TextView
+        android:id="@+id/task"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/new_task"
+        android:fontFamily="@font/montserrat_bold"
+        android:text=""
+        android:textColor="#F8F2F2"
+        android:textSize="18sp"
+        android:padding="10dp"
+        android:gravity="center_vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/currentDate" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
