@@ -2,13 +2,13 @@
     <!-- Base application theme. -->
     <style name="Theme.Mobilenotes" parent="Theme.AppCompat.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/main_background</item>
-        <item name="colorPrimaryVariant">@color/main_background</item>
-        <item name="colorOnPrimary">@color/main_background</item>
+        <item name="colorPrimary">@color/main_dark</item>
+        <item name="colorPrimaryVariant">@color/main_dark</item>
+        <item name="colorOnPrimary">@color/main_dark</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
-        <item name="colorOnSecondary">@color/main_background</item>
+        <item name="colorSecondary">@color/main_light</item>
+        <item name="colorSecondaryVariant">@color/main_light</item>
+        <item name="colorOnSecondary">@color/main_dark</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->

@@ -36,14 +36,13 @@ class MainActivity : AppCompatActivity() {
         if (data != null) {
             binding.task.text = data.getString("newTask")
             binding.task.visibility = View.VISIBLE
+        } else {
+            binding.task.visibility = View.GONE
         }
     }
 
     private fun initStartActivity() {
         binding.currentDate.text = LocalDate.now().format(dateFormat)
-        if (binding.task.text.isEmpty()) {
-            binding.task.visibility = View.GONE
-        }
     }
 
     fun onAddTaskClick(view: View) {
