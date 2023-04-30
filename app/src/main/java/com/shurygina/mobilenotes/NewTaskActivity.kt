@@ -9,9 +9,12 @@ import android.view.Window
 import androidx.annotation.RequiresApi
 import com.shurygina.mobilenotes.databinding.ActivityMainBinding
 import com.shurygina.mobilenotes.databinding.AddNewTaskActivityBinding
+import com.shurygina.mobilenotes.db.DataBaseManager
+import java.time.LocalDateTime
 
 @RequiresApi(Build.VERSION_CODES.O)
 class NewTaskActivity : AppCompatActivity() {
+    val dbManager = DataBaseManager(this)
     lateinit var binding: AddNewTaskActivityBinding
     lateinit var parentActivity: Intent
 
@@ -21,6 +24,7 @@ class NewTaskActivity : AppCompatActivity() {
         binding = AddNewTaskActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        dbManager.openDb()
         parentActivity = Intent(this, MainActivity::class.java)
     }
 
@@ -30,9 +34,17 @@ class NewTaskActivity : AppCompatActivity() {
     }
 
     fun onAddBtnClick(view: View) {
-        val newTask: String = binding.newTaskDescription.text.toString()
-        parentActivity.putExtra("newTask", newTask)
+        var title = binding.newTaskDescription.text.toString()
+        var priority = binding.prioritySwitch.isChecked
+
+        dbManager.insert(title, priority, false, LocalDateTime.now())
+
         startActivity(parentActivity)
         finish()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        dbManager.close()
     }
 }

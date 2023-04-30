@@ -14,13 +14,16 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.shurygina.mobilenotes.databinding.ActivityMainBinding
+import com.shurygina.mobilenotes.db.DataBaseManager
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.Date
 
 @RequiresApi(Build.VERSION_CODES.O)
 class MainActivity : AppCompatActivity() {
+    val dbManager = DataBaseManager(this)
     lateinit var binding: ActivityMainBinding
+    lateinit var tasks: ArrayList<String>
 
     val dateFormat = DateTimeFormatter.ofPattern("d MMMM")
 
@@ -29,20 +32,19 @@ class MainActivity : AppCompatActivity() {
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        dbManager.openDb()
 
         initStartActivity()
-        var data: Bundle? = intent.extras
-
-        if (data != null) {
-            binding.task.text = data.getString("newTask")
-            binding.task.visibility = View.VISIBLE
-        } else {
-            binding.task.visibility = View.GONE
-        }
     }
 
     private fun initStartActivity() {
         binding.currentDate.text = LocalDate.now().format(dateFormat)
+        tasks = dbManager.read()
+
+        if (tasks.isNotEmpty()) {
+            binding.task.text = tasks[tasks.size - 1]
+            binding.task.visibility = View.VISIBLE
+        }
     }
 
     fun onAddTaskClick(view: View) {
@@ -55,4 +57,8 @@ class MainActivity : AppCompatActivity() {
         binding.root.clearFocus()
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        dbManager.close()
+    }
 }
