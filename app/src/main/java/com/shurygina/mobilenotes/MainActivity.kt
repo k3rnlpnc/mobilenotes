@@ -5,19 +5,22 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
+import android.widget.ArrayAdapter
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.marginTop
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.shurygina.mobilenotes.databinding.ActivityMainBinding
 import com.shurygina.mobilenotes.db.DataBaseManager
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
-import java.util.Date
 
 @RequiresApi(Build.VERSION_CODES.O)
 class MainActivity : AppCompatActivity() {
@@ -34,7 +37,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         dbManager.openDb()
 
-        initStartActivity()
+        try {
+            initStartActivity()
+        } catch (e: Exception) {
+            println(e.message)
+        }
+
     }
 
     private fun initStartActivity() {
@@ -42,8 +50,7 @@ class MainActivity : AppCompatActivity() {
         tasks = dbManager.read()
 
         if (tasks.isNotEmpty()) {
-            binding.task.text = tasks[tasks.size - 1]
-            binding.task.visibility = View.VISIBLE
+            binding.taskList.adapter = TaskAdapter(this, tasks)
         }
     }
 

@@ -33,28 +33,24 @@
         android:text="@string/plus"
         android:textColor="@color/main_dark"
         android:textSize="20sp"
+        android:elevation="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.871"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/task"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/new_task"
-        android:fontFamily="@font/montserrat_bold"
-        android:gravity="center_vertical"
-        android:padding="10dp"
-        android:text=""
-        android:textColor="@color/main_light"
-        android:textSize="18sp"
-        android:visibility="gone"
+    <ListView
+        android:id="@+id/taskList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="64dp"
+        android:layout_marginHorizontal="5dp"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/currentDate" />
+        app:layout_constraintTop_toBottomOf="@+id/currentDate"
+        app:layout_constraintVertical_bias="0.019" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
