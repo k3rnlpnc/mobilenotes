@@ -3,6 +3,7 @@
     <color name="main_dark">#394648</color>
     <color name="main_light">#F8F2F2</color>
     <color name="green">#69995D</color>
+    <color name="red">#D1462F</color>
     <color name="hint_color">#70FFFFFF</color>
     <color name="button_dark">#1E1E1E</color>
     <color name="black">#FF000000</color>
